@@ -25,7 +25,7 @@ struct ContentView: View {
                 CityTextView(CityName: "Bangkok, TH")
                 
                 MainWeatherStatusView(image_name: isNight ? "cloud.moon.bolt.fill" : "cloud.sun.fill", temperature: isNight ? 25 : 35)
-                // isNight ? days["img_night] : days["img_day"]
+                
                 HStack(spacing:18) {
                     ForEach(DaysOfWeek, id: \.self) { days in
                         if isNight {
@@ -35,10 +35,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                
                 Spacer()
-                
-                
                 Button(
                     action: {
                         isNight.toggle()
@@ -49,6 +46,10 @@ struct ContentView: View {
                 )
                 Spacer()
             }
+        }.onAppear{
+            let button = WeatherButton(title: "Change Days Time", textcolor: .blue, background: .white)
+            
+            print(type(of: button.body))
         }
     }
 }
